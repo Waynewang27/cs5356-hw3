@@ -74,6 +74,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wayne's World</title>
+  <!-- Open Graph meta tags for rich link previews -->
+  <meta property="og:title" content="Wayne's World" />
+  <meta property="og:description" content="Discover Wayne's page with his hobbies, including his journey through Game of Thrones." />
+  <meta property="og:image" content="https://waynewang27.github.io/cs5356-hw3/images/Me.JPG" />
+  <meta property="og:url" content="https://waynewang27.github.io/cs5356-hw3/" />
+  <meta property="og:type" content="website" />
   <!-- Include Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -123,11 +129,16 @@
     <section id="Hobby" class="bg-white p-6 rounded shadow">
       <h2 class="text-2xl font-semibold mb-4">My Hobby</h2>
       <p class="mb-4">
-        I love watching shows, and although it may seem a little late to start, here I am diving into Game of Thrones. I’m curious to explore every season and episode of this epic series.
+        I love watching shows, and although it might seem a little late to start, here I am diving into Game of Thrones. I'm currently binge-watching it and discovering all its intricate details.
       </p>
       <!-- Container where Game of Thrones seasons and episodes will be displayed -->
       <div id="got-info">
         <p>Loading Game of Thrones info...</p>
+      </div>
+      <!-- Additional interactive element using mouse events -->
+      <div id="mouse-area" class="mt-6 p-4 border border-gray-300 rounded text-center">
+        <p>Move your mouse over this area to see the coordinates!</p>
+        <p id="mouse-coords" class="mt-2 font-bold">X: 0, Y: 0</p>
       </div>
     </section>
     
@@ -159,7 +170,6 @@
   <!-- Script to fetch Game of Thrones seasons and episodes from TVmaze API -->
   <script>
     // TVmaze API endpoints for Game of Thrones (show id 82)
-    // First, fetch all seasons for the show
     fetch('https://api.tvmaze.com/shows/82/seasons')
       .then(response => {
         if (!response.ok) {
@@ -168,7 +178,6 @@
         return response.json();
       })
       .then(seasons => {
-        // For each season, fetch its episodes
         const seasonPromises = seasons.map(season => {
           return fetch(`https://api.tvmaze.com/seasons/${season.id}/episodes`)
             .then(response => {
@@ -178,7 +187,6 @@
               return response.json();
             })
             .then(episodes => {
-              // Build HTML for this season and its episodes
               let seasonHtml = `<div class="mb-6"><h3 class="text-xl font-bold mb-2">Season ${season.number}</h3>`;
               if (episodes.length > 0) {
                 seasonHtml += '<ul class="list-disc pl-6">';
@@ -196,16 +204,26 @@
         return Promise.all(seasonPromises);
       })
       .then(seasonsHtml => {
-        const container = document.getElementById('got-info');
-        container.innerHTML = seasonsHtml.join('');
+        document.getElementById('got-info').innerHTML = seasonsHtml.join('');
       })
       .catch(error => {
         console.error('Error fetching Game of Thrones info:', error);
         document.getElementById('got-info').innerHTML = '<p>Error loading show information.</p>';
       });
+      
+    // Additional interactivity: Mousemove event to display coordinates in #mouse-area
+    const mouseArea = document.getElementById('mouse-area');
+    const mouseCoords = document.getElementById('mouse-coords');
+    mouseArea.addEventListener('mousemove', (e) => {
+      const rect = mouseArea.getBoundingClientRect();
+      const x = Math.round(e.clientX - rect.left);
+      const y = Math.round(e.clientY - rect.top);
+      mouseCoords.textContent = `X: ${x}, Y: ${y}`;
+    });
   </script>
 </body>
 </html>
+
 
 
 
