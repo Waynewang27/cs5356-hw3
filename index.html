@@ -33,7 +33,7 @@
       <p class="mb-4">Beyond the name, I’m ...</p>
       <ul class="list-disc list-inside mb-4">
         <li><strong>Product Specialist</strong> – on a mission to create meaningful things and actually bridge the gap</li>
-        <li><strong>Problem Solver</strong> – creative or practical, your call :)</li>
+        <li><strong>Problem Solver</strong> – creative or practical, your call :></li>
         <li><strong>Critical Thinker & Listener</strong> – I swear I listen and think before I start outputting too much</li>
         <li><strong>Empathetic Perceiver</strong> – I always see the world, the people from a third-person perspective</li>
         <li><strong>User Myself</strong> – bad design genuinely annoys me, so I can’t help but fix it</li>
@@ -58,16 +58,19 @@
     <!-- Section 2: My Hobby -->
     <section id="Hobby" class="bg-white p-6 rounded shadow">
       <h2 class="text-2xl font-semibold mb-4">My Hobby</h2>
+      <!-- Interactive Quote Generator at the top -->
+      <div id="got-quote" class="mb-4 p-4 border border-gray-300 rounded text-center">
+        <button id="generate-quote" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">
+          Generate GOT Quote
+        </button>
+        <p id="quote-display" class="mt-2 font-bold text-lg"></p>
+      </div>
       <p class="mb-4">
         I love watching shows, and although it might seem a little late to start, here I am diving into Game of Thrones. I'm currently binge-watching it and discovering all its intricate details.
       </p>
       <!-- Container where Game of Thrones seasons and episodes will be displayed -->
       <div id="got-info">
         <p>Loading Game of Thrones info...</p>
-      </div>
-      <!-- Additional interactive element: GOT Quote Area -->
-      <div id="got-quote" class="mt-6 p-4 border border-gray-300 rounded text-center">
-        <p>Move your mouse here to reveal a Game of Thrones quote!</p>
       </div>
     </section>
     
@@ -96,9 +99,9 @@
     <p>&copy; Better call Wayne 🫵. 2025 Wayne's World, all right reserved, I suppose.</p>
   </footer>
   
-  <!-- Script to fetch Game of Thrones seasons and episodes from TVmaze API -->
+  <!-- Script to fetch Game of Thrones seasons and episodes from TVmaze API and handle quote generation -->
   <script>
-    // TVmaze API endpoints for Game of Thrones (show id 82)
+    // Fetch Game of Thrones seasons and episodes using TVmaze API
     fetch('https://api.tvmaze.com/shows/82/seasons')
       .then(response => {
         if (!response.ok) {
@@ -140,8 +143,9 @@
         document.getElementById('got-info').innerHTML = '<p>Error loading show information.</p>';
       });
       
-    // Additional interactivity: Mousemove event to display a random Game of Thrones quote
-    const gotQuoteDiv = document.getElementById('got-quote');
+    // GOT Quote Generator: when the button is clicked, display a random quote
+    const generateQuoteBtn = document.getElementById('generate-quote');
+    const quoteDisplay = document.getElementById('quote-display');
     const gotQuotes = [
       "Winter is coming.",
       "When you play the game of thrones, you win or you die.",
@@ -149,17 +153,15 @@
       "A Lannister always pays his debts.",
       "Fire and Blood.",
       "The night is dark and full of terrors.",
-      "Chaos isn't a pit. Chaos is a ladder."
+      "Chaos isn't a pit. Chaos is a ladder.",
+      "Any man who must say, 'I am the King,' is no true king.",
+      "This is not a quote, just for fun lolll",
     ];
-    gotQuoteDiv.addEventListener('mousemove', () => {
+    
+    generateQuoteBtn.addEventListener('click', () => {
       const randomIndex = Math.floor(Math.random() * gotQuotes.length);
-      gotQuoteDiv.innerHTML = `<p class="font-bold text-lg">${gotQuotes[randomIndex]}</p>`;
+      quoteDisplay.textContent = gotQuotes[randomIndex];
     });
   </script>
 </body>
 </html>
-
-
-
-
-
