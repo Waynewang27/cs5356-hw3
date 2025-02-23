@@ -12,8 +12,6 @@
   <meta property="og:url" content="https://waynewang27.github.io/cs5356-hw3/" />
   <meta property="og:type" content="website" />
 
-  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-
   <style>
     * {
       box-sizing: border-box;
@@ -21,12 +19,11 @@
       padding: 0;
     }
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: Helvetica, sans-serif;
       background-color: #f9f9f9;
       color: #333;
       line-height: 1.5;
       padding: 20px;
-      /* overflow-x: hidden; */
     }
     header {
       background: linear-gradient(to left, #cffafe, #93c5fd, #818cf8);
@@ -103,6 +100,9 @@
       font-size: 1.25rem;
       font-weight: bold;
     }
+    .season-container {
+      margin-bottom: 20px;
+    }
     footer {
       background: #93c5fd;
       color: #fff;
@@ -160,7 +160,7 @@
       <details>
         <summary><strong>Reflection of Using New HTML and CSS Techniques</strong></summary>
         <ui>
-          <li><strong>HTML Element</strong> - I learned how the <code><details></code> element can be constructed and used, and I also discovered how powerful it is as a tool for creating interactive & collapsible sections. I found that this feature could enable a cleaner content page, allowing users to expand sections at their will if they want to learn more. In this way, I can keep the page tidy while including as much content as I want.</li>
+          <li><strong>HTML Element</strong> - I learned how the <code>&lt;details&gt;</code> element can be constructed and used, and I also discovered how powerful it is as a tool for creating interactive & collapsible sections. I found that this feature could enable a cleaner content page, allowing users to expand sections at their will if they want to learn more. In this way, I can keep the page tidy while including as much content as I want.</li>
           <li><strong>CSS property</strong> - While experimenting with the gradients property in CSS, I figured out how modern websites get those vibrant backgrounds. Using this property, I believe I can create dynamic backgrounds that really make a page pop and grab the audience's attention.</li>
         </ui>
       </details>
@@ -201,22 +201,16 @@
   <script>
     fetch('https://api.tvmaze.com/shows/82/seasons')
       .then(response => {
-        // if (!response.ok) {
-        //   throw new Error('Network response was not ok: ' + response.statusText);
-        // }
         return response.json();
       })
       .then(seasons => {
         const seasonPromises = seasons.map(season => {
           return fetch(`https://api.tvmaze.com/seasons/${season.id}/episodes`)
             .then(response => {
-              // if (!response.ok) {
-              //   throw new Error('Network response was not ok: ' + response.statusText);
-              // }
               return response.json();
             })
             .then(episodes => {
-              let seasonHtml = `<div><h3>Season ${season.number}</h3>`;
+              let seasonHtml = `<div class="season-container"><h3>Season ${season.number}</h3>`;
               if (episodes.length > 0) {
                 seasonHtml += '<ul>';
                 episodes.forEach(ep => {
@@ -256,6 +250,6 @@
       quoteDisplay.textContent = gotQuotes[randomIndex];
     });
   </script>
-  
+
 </body>
 </html>
