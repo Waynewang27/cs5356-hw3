@@ -71,8 +71,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wayne's World</title>
   <!-- Include Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -85,12 +85,12 @@
     </h1>
   </header>
   
-  <!-- Main content split into 2 sections -->
+  <!-- Main content split into 3 sections -->
   <main class="container mx-auto px-4 space-y-6">
     <!-- Section 1: Introduction -->
     <section id="Intro" class="bg-white p-6 rounded shadow">
       <h2 class="text-2xl font-semibold mb-4">About Me</h2>
-      <img src="images/Me.JPG" alt="Picture of myself" class="w-full max-w-xs mx-auto mb-4">
+      <img src="images/Me.JPG" alt="Picture of myself" class="w-full max-w-xs mx-auto mb-4" />
       <p class="mb-4">
         You’ve probably met plenty of Waynes, but here's a fun fact: my legal first name is Wei. Since "Wei" sounds pretty close to "Wayne," I figured, why not roll with it? So, if you ever meet another Wayne, just remember, I might be the only one who got here through a linguistic shortcut.
       </p>
@@ -114,12 +114,24 @@
           Reflection of Using New HTML and CSS Elements
         </summary>
         <p class="mt-2">
-          I learned that the <code>&lt;details&gt;</code> element is a powerful tool for creating interactive, collapsible sections without extra JavaScript. This native behavior allows users to expand or hide additional content effortlessly. In addition, experimenting with CSS gradients using Tailwind (via classes like <code>bg-gradient-to-r</code>, <code>from-blue-500</code>, and <code>to-purple-600</code>) has shown me how to create visually dynamic backgrounds with minimal code.
+          I learned that the <code>&lt;details&gt;</code> element is a powerful tool for creating interactive, collapsible sections without extra JavaScript. It allows users to reveal or hide additional content with a simple click. Experimenting with CSS gradients (using Tailwind classes like <code>bg-gradient-to-r</code>, <code>from-blue-500</code>, and <code>to-purple-600</code>) has also shown me how a dynamic background can enhance a page’s visual appeal.
         </p>
       </details>
     </section>
     
-    <!-- Section 2: Contact -->
+    <!-- Section 2: My Hobby -->
+    <section id="Hobby" class="bg-white p-6 rounded shadow">
+      <h2 class="text-2xl font-semibold mb-4">My Hobby</h2>
+      <p class="mb-4">
+        I'm a passionate soccer fan and a devoted supporter of Chelsea FC. I love following their journey, especially by keeping track of all their upcoming matches.
+      </p>
+      <!-- Container where upcoming Chelsea matches will be displayed -->
+      <div id="chelsea-matches">
+        <p>Loading upcoming matches...</p>
+      </div>
+    </section>
+    
+    <!-- Section 3: Contact -->
     <section id="Contact" class="bg-white p-6 rounded shadow">
       <h2 class="text-2xl font-semibold mb-4">Contact Me Here!</h2>
       <p class="mb-4">
@@ -143,6 +155,46 @@
   <footer class="bg-gray-900 text-white text-center py-4 mt-6">
     <p>&copy; 2025 Wayne's World. All rights reserved.</p>
   </footer>
+  
+  <!-- Script to fetch upcoming Chelsea matches using the Football-Data API -->
+  <script>
+    // Note: Replace 'YOUR_API_KEY' with your actual API key from football-data.org.
+    fetch('https://api.football-data.org/v4/teams/61/matches?status=SCHEDULED', {
+      headers: { 'X-Auth-Token': 'YOUR_API_KEY' }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok: ' + response.statusText);
+      }
+      return response.json();
+    })
+    .then(data => {
+      const matchesContainer = document.getElementById('chelsea-matches');
+      matchesContainer.innerHTML = ''; // Clear the loading text
+      
+      if (data.matches && data.matches.length > 0) {
+        const list = document.createElement('ul');
+        list.className = 'list-disc pl-6';
+        data.matches.forEach(match => {
+          const listItem = document.createElement('li');
+          // Format match details (date, home vs away teams)
+          const matchDate = new Date(match.utcDate).toLocaleString();
+          const homeTeam = match.homeTeam.name;
+          const awayTeam = match.awayTeam.name;
+          listItem.textContent = `${matchDate}: ${homeTeam} vs ${awayTeam}`;
+          list.appendChild(listItem);
+        });
+        matchesContainer.appendChild(list);
+      } else {
+        matchesContainer.innerHTML = '<p>No upcoming matches found.</p>';
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching Chelsea matches:', error);
+      document.getElementById('chelsea-matches').innerHTML = '<p>Error loading matches.</p>';
+    });
+  </script>
 </body>
 </html>
+
 
