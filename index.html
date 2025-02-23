@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://waynewang27.github.io/cs5356-hw3/" />
   <meta property="og:type" content="website" />
   <style>
-    /* Reset some basic styling */
+    /* Basic Reset */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -26,7 +26,7 @@
       overflow-x: hidden;
     }
     header {
-      background: linear-gradient(to right, #D1D5DB, #6B7280, #374151);
+      background: linear-gradient(to top left, #bfdbfe, #60a5fa, #2563eb);
       color: #fff;
       text-align: center;
       padding: 20px;
@@ -46,22 +46,28 @@
       background: #fff;
       padding: 20px;
       border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
     section h2 {
       font-size: 1.75rem;
       margin-bottom: 10px;
     }
-    section img {
-      display: block;
-      max-width: 100%;
+    /* Intro Section: Side-by-Side Layout */
+    #Intro .intro-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    #Intro .intro-content img {
+      flex: 1 1 250px;
+      max-width: 300px;
       height: auto;
-      margin: 0 auto 20px;
     }
-    ul {
-      margin-left: 20px;
-      list-style-type: disc;
+    #Intro .intro-content .intro-text {
+      flex: 2 1 300px;
     }
+    /* Details styling remains unchanged */
     details {
       margin-top: 20px;
       background: #e0f7fa;
@@ -110,6 +116,9 @@
       section h2 {
         font-size: 1.5rem;
       }
+      #Intro .intro-content {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -121,25 +130,28 @@
     <!-- Section 1: Introduction -->
     <section id="Intro">
       <h2>About Me</h2>
-      <img src="images/Me.JPG" alt="Picture of myself" />
-      <p>
-        You’ve probably met plenty of Waynes, but here's a fun fact: my legal first name is Wei. Since "Wei" sounds pretty close to "Wayne," I figured, why not roll with it? So, if you ever meet another Wayne, just remember, I might be the only one who got here through a linguistic shortcut.
-      </p>
-      <p>Beyond the name, I’m ...</p>
-      <ul>
-        <li><strong>Product Specialist</strong> – on a mission to create meaningful things and actually bridge the gap</li>
-        <li><strong>Problem Solver</strong> – creative or practical, your call :></li>
-        <li><strong>Critical Thinker & Listener</strong> – I swear I listen and think before I start outputting too much</li>
-        <li><strong>Empathetic Perceiver</strong> – I always see the world, the people from a third-person perspective</li>
-        <li><strong>User Myself</strong> – bad design genuinely annoys me, so I can’t help but fix it</li>
-        <li><strong>Sports Lover & Video Gamer</strong> – lifelong, unstoppable, and here to stay ;></li>
-      </ul>
-      <p>
-        I define myself as above, but I’m always open to more or to the challenge of these identities you’ve picked up on through our conversations! Just as Game of Thrones puts it, "Any man who must say, 'I am the King,' is no true king."
-      </p>
-      <p>So, let’s talk—better call Wayne! 🚀</p>
-      
-      <!-- Reflection using <details> element -->
+      <div class="intro-content">
+        <img src="images/Me.JPG" alt="Picture of myself" />
+        <div class="intro-text">
+          <p>
+            You’ve probably met plenty of Waynes, but here's a fun fact: my legal first name is Wei. Since "Wei" sounds pretty close to "Wayne," I figured, why not roll with it? So, if you ever meet another Wayne, just remember, I might be the only one who got here through a linguistic shortcut.
+          </p>
+          <p>Beyond the name, I’m ...</p>
+          <ul>
+            <li><strong>Product Specialist</strong> – on a mission to create meaningful things and actually bridge the gap</li>
+            <li><strong>Problem Solver</strong> – creative or practical, your call :></li>
+            <li><strong>Critical Thinker & Listener</strong> – I swear I listen and think before I start outputting too much</li>
+            <li><strong>Empathetic Perceiver</strong> – I always see the world, the people from a third-person perspective</li>
+            <li><strong>User Myself</strong> – bad design genuinely annoys me, so I can’t help but fix it</li>
+            <li><strong>Sports Lover & Video Gamer</strong> – lifelong, unstoppable, and here to stay ;></li>
+          </ul>
+          <p>
+            I define myself as above, but I’m always open to more or to the challenge of these identities you’ve picked up on through our conversations! Just as Game of Thrones puts it, "Any man who must say, 'I am the King,' is no true king."
+          </p>
+          <p>So, let’s talk—better call Wayne! 🚀</p>
+        </div>
+      </div>
+      <!-- Reflection using <details> element placed below the side-by-side content -->
       <details>
         <summary>Reflection of Using New HTML and CSS Elements</summary>
         <p>
