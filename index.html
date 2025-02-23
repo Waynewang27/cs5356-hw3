@@ -10,28 +10,123 @@
   <meta property="og:image" content="https://waynewang27.github.io/cs5356-hw3/images/Sunnyday.jpg" />
   <meta property="og:url" content="https://waynewang27.github.io/cs5356-hw3/" />
   <meta property="og:type" content="website" />
-  <!-- Include Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Reset some basic styling */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    header {
+      background: linear-gradient(to right, #D1D5DB, #6B7280, #374151);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 2rem;
+    }
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 10px;
+    }
+    section img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto 20px;
+    }
+    ul {
+      margin-left: 20px;
+      list-style-type: disc;
+    }
+    details {
+      margin-top: 20px;
+      background: #e0f7fa;
+      padding: 10px;
+      border: 1px solid #007acc;
+      border-radius: 5px;
+    }
+    footer {
+      background: #374151;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+    /* Interactive GOT Quote Generator */
+    #got-quote {
+      text-align: center;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    #got-quote button {
+      background: #007acc;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    #got-quote button:hover {
+      background: #005fa3;
+    }
+    #quote-display {
+      margin-top: 10px;
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      section h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <!-- Header with gradient background -->
-  <header class="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center py-6 mb-6">
-    <h1 class="text-3xl font-bold">
-      Hey hey! Welcome to Wayne's page, where there’s more to me than just the name!
-    </h1>
+<body>
+  <header>
+    <h1>Hey hey! Welcome to Wayne's page, where there’s more to me than just the name!</h1>
   </header>
-  
-  <!-- Main content split into 3 sections -->
-  <main class="container mx-auto px-4 space-y-6">
+  <main>
     <!-- Section 1: Introduction -->
-    <section id="Intro" class="bg-white p-6 rounded shadow">
-      <h2 class="text-2xl font-semibold mb-4">About Me</h2>
-      <img src="images/Me.JPG" alt="Picture of myself" class="w-full max-w-xs mx-auto mb-4" />
-      <p class="mb-4">
+    <section id="Intro">
+      <h2>About Me</h2>
+      <img src="images/Me.JPG" alt="Picture of myself" />
+      <p>
         You’ve probably met plenty of Waynes, but here's a fun fact: my legal first name is Wei. Since "Wei" sounds pretty close to "Wayne," I figured, why not roll with it? So, if you ever meet another Wayne, just remember, I might be the only one who got here through a linguistic shortcut.
       </p>
-      <p class="mb-4">Beyond the name, I’m ...</p>
-      <ul class="list-disc list-inside mb-4">
+      <p>Beyond the name, I’m ...</p>
+      <ul>
         <li><strong>Product Specialist</strong> – on a mission to create meaningful things and actually bridge the gap</li>
         <li><strong>Problem Solver</strong> – creative or practical, your call :></li>
         <li><strong>Critical Thinker & Listener</strong> – I swear I listen and think before I start outputting too much</li>
@@ -39,33 +134,29 @@
         <li><strong>User Myself</strong> – bad design genuinely annoys me, so I can’t help but fix it</li>
         <li><strong>Sports Lover & Video Gamer</strong> – lifelong, unstoppable, and here to stay ;></li>
       </ul>
-      <p class="mb-4">
+      <p>
         I define myself as above, but I’m always open to more or to the challenge of these identities you’ve picked up on through our conversations! Just as Game of Thrones puts it, "Any man who must say, 'I am the King,' is no true king."
       </p>
-      <p class="mb-4">So, let’s talk—better call Wayne! 🚀</p>
+      <p>So, let’s talk—better call Wayne! 🚀</p>
       
       <!-- Reflection using <details> element -->
-      <details class="mt-6 p-4 bg-blue-50 border border-blue-300 rounded">
-        <summary class="font-semibold cursor-pointer text-lg">
-          Reflection of Using New HTML and CSS Elements
-        </summary>
-        <p class="mt-2">
-          I learned that the <code>&lt;details&gt;</code> element is a powerful tool for creating interactive, collapsible sections without extra JavaScript. It allows users to reveal or hide additional content with a simple click. Experimenting with CSS gradients (using Tailwind classes like <code>bg-gradient-to-r</code>, <code>from-blue-500</code>, and <code>to-purple-600</code>) has also shown me how a dynamic background can enhance a page’s visual appeal.
+      <details>
+        <summary>Reflection of Using New HTML and CSS Elements</summary>
+        <p>
+          I learned that the <code>&lt;details&gt;</code> element is a powerful tool for creating interactive, collapsible sections without extra JavaScript. It allows users to reveal or hide additional content with a simple click. Experimenting with CSS gradients has also shown me how a dynamic background can enhance a page’s visual appeal.
         </p>
       </details>
     </section>
     
     <!-- Section 2: My Hobby -->
-    <section id="Hobby" class="bg-white p-6 rounded shadow">
-      <h2 class="text-2xl font-semibold mb-4">My Hobby</h2>
+    <section id="Hobby">
+      <h2>My Hobby</h2>
       <!-- Interactive Quote Generator at the top -->
-      <div id="got-quote" class="mb-4 p-4 border border-gray-300 rounded text-center">
-        <button id="generate-quote" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">
-          Generate GOT Quote
-        </button>
-        <p id="quote-display" class="mt-2 font-bold text-lg"></p>
+      <div id="got-quote">
+        <button id="generate-quote">Generate GOT Quote</button>
+        <p id="quote-display"></p>
       </div>
-      <p class="mb-4">
+      <p>
         I love watching shows, and although it might seem a little late to start, here I am diving into Game of Thrones. I'm currently binge-watching it and discovering all its intricate details.
       </p>
       <!-- Container where Game of Thrones seasons and episodes will be displayed -->
@@ -75,27 +166,22 @@
     </section>
     
     <!-- Section 3: Contact -->
-    <section id="Contact" class="bg-white p-6 rounded shadow">
-      <h2 class="text-2xl font-semibold mb-4">Contact Me Here!</h2>
-      <p class="mb-4">
+    <section id="Contact">
+      <h2>Contact Me Here!</h2>
+      <p>
         Feel free to drop me an email at 
-        <a href="mailto:ww552@cornell.edu" class="text-blue-600 hover:underline">
-          ww552@cornell.edu
-        </a> 
+        <a href="mailto:ww552@cornell.edu">ww552@cornell.edu</a> 
         or connect with me on 
-        <a href="https://www.linkedin.com/in/-wayne/" target="_blank" class="text-blue-600 hover:underline">
-          LinkedIn
-        </a>,
+        <a href="https://www.linkedin.com/in/-wayne/" target="_blank">LinkedIn</a>,
         or maybe just call me at 
-        <span class="font-medium">206-532-7803</span>.
+        <span>206-532-7803</span>.
       </p>
       <p>
         I also explored using CSS gradients to create dynamic visual effects. It’s fascinating how a simple background transition can elevate the overall design.
       </p>
     </section>
   </main>
-  
-  <footer class="bg-gray-900 text-white text-center py-4 mt-6">
+  <footer>
     <p>&copy; Better call Wayne 🫵. 2025 Wayne's World, all right reserved, I suppose.</p>
   </footer>
   
@@ -119,9 +205,9 @@
               return response.json();
             })
             .then(episodes => {
-              let seasonHtml = `<div class="mb-6"><h3 class="text-xl font-bold mb-2">Season ${season.number}</h3>`;
+              let seasonHtml = `<div><h3>Season ${season.number}</h3>`;
               if (episodes.length > 0) {
-                seasonHtml += '<ul class="list-disc pl-6">';
+                seasonHtml += '<ul>';
                 episodes.forEach(ep => {
                   seasonHtml += `<li>Episode ${ep.number}: ${ep.name}</li>`;
                 });
@@ -155,7 +241,7 @@
       "The night is dark and full of terrors.",
       "Chaos isn't a pit. Chaos is a ladder.",
       "Any man who must say, 'I am the King,' is no true king.",
-      "This is not a quote, just for fun lolll",
+      "This is not a quote, just for fun lolll"
     ];
     
     generateQuoteBtn.addEventListener('click', () => {
