@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wayne's World</title>
-  <!-- Open Graph meta tags for rich link previews -->
+
   <meta property="og:title" content="Wayne's World" />
-  <meta property="og:description" content="Discover Wayne's page with his hobbies, including his journey through Game of Thrones." />
+  <meta property="og:description" content="Hiiiiiiii, hope you enjoy this aboutMe page :>>" />
   <meta property="og:image" content="https://waynewang27.github.io/cs5356-hw3/images/Sunnyday.jpg" />
   <meta property="og:url" content="https://waynewang27.github.io/cs5356-hw3/" />
   <meta property="og:type" content="website" />
+
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
   <style>
-    /* Basic Reset */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       background-color: #f9f9f9;
       color: #333;
-      line-height: 1.6;
+      line-height: 1.5;
       padding: 20px;
-      overflow-x: hidden;
+      /* overflow-x: hidden; */
     }
     header {
       background: linear-gradient(to left, #cffafe, #93c5fd, #818cf8);
@@ -52,7 +55,7 @@
       font-size: 1.75rem;
       margin-bottom: 10px;
     }
-    /* Intro Section: Side-by-Side Layout */
+
     #Intro .intro-content {
       display: flex;
       flex-wrap: wrap;
@@ -67,7 +70,6 @@
     #Intro .intro-content .intro-text {
       flex: 1;
     }
-    /* Details styling remains unchanged */
     details {
       margin-top: 20px;
       background: #e0f7fa;
@@ -75,10 +77,10 @@
       border: 1px solid #007acc;
       border-radius: 5px;
     }
-    /* Interactive GOT Quote Generator */
+
     #got-quote {
       text-align: center;
-      border: 1px solid #ccc;
+      border: 2px solid #ccc;
       padding: 10px;
       border-radius: 5px;
       margin-bottom: 20px;
@@ -97,18 +99,19 @@
     }
     #quote-display {
       margin-top: 10px;
+      margin-bottom: 10px;
       font-size: 1.25rem;
       font-weight: bold;
     }
     footer {
-      background: linear-gradient(to top, #cffafe, #93c5fd, #818cf8);
+      background: #93c5fd;
       color: #fff;
       text-align: center;
       padding: 10px;
       margin-top: 20px;
       border-radius: 5px;
     }
-    /* Responsive adjustments */
+
     @media (max-width: 600px) {
       header h1 {
         font-size: 1.5rem;
@@ -123,12 +126,13 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <h1>Hey hey! Welcome to Wayne's page, where there’s more to me than just the name!</h1>
   </header>
+
   <main>
-    <!-- Section 1: Introduction -->
     <section id="Intro">
       <h2>About Me</h2>
       <div class="intro-content">
@@ -152,33 +156,31 @@
           <p>So, let’s talk—better call Wayne! 🚀</p>
         </div>
       </div>
-      <!-- Reflection using <details> element placed below the side-by-side content -->
+
       <details>
-        <summary>Reflection of Using New HTML and CSS Elements</summary>
-        <p>
-          I learned that the <code>&lt;details&gt;</code> element is a powerful tool for creating interactive, collapsible sections without extra JavaScript. It allows users to reveal or hide additional content with a simple click. Experimenting with CSS gradients has also shown me how a dynamic background can enhance a page’s visual appeal.
-        </p>
+        <summary><strong>Reflection of Using New HTML and CSS Techniques</strong></summary>
+        <ui>
+          <li><strong>HTML Element</strong> - I learned how the <code><details></code> element can be constructed and used, and I also discovered how powerful it is as a tool for creating interactive & collapsible sections. I found that this feature could enable a cleaner content page, allowing users to expand sections at their will if they want to learn more. In this way, I can keep the page tidy while including as much content as I want.</li>
+          <li><strong>CSS property</strong> - While experimenting with the gradients property in CSS, I figured out how modern websites get those vibrant backgrounds. Using this property, I believe I can create dynamic backgrounds that really make a page pop and grab the audience's attention.</li>
+        </ui>
       </details>
     </section>
     
-    <!-- Section 2: My Hobby -->
     <section id="Hobby">
       <h2>My Hobby</h2>
-      <!-- Interactive Quote Generator at the top -->
       <div id="got-quote">
         <button id="generate-quote">Generate GOT Quote</button>
         <p id="quote-display"></p>
       </div>
       <p>
-        I love watching shows, and although it might seem a little late to start, here I am diving into Game of Thrones. I'm currently binge-watching it and discovering all its intricate details.
+        I REALLY love watching shows, and even if it seems a bit late to start, I'm diving into Game of Thrones right now. As you can imagine, I'm binge-watching it and exploring all the cool details.
       </p>
-      <!-- Container where Game of Thrones seasons and episodes will be displayed -->
+
       <div id="got-info">
         <p>Loading Game of Thrones info...</p>
       </div>
     </section>
     
-    <!-- Section 3: Contact -->
     <section id="Contact">
       <h2>Contact Me Here!</h2>
       <p>
@@ -187,34 +189,30 @@
         or connect with me on 
         <a href="https://www.linkedin.com/in/-wayne/" target="_blank">LinkedIn</a>,
         or maybe just call me at 
-        <span>206-532-7803</span>.
-      </p>
-      <p>
-        I also explored using CSS gradients to create dynamic visual effects. It’s fascinating how a simple background transition can elevate the overall design.
+        <a href=“tel:206-532-7803”>206-532-7803</a>.
       </p>
     </section>
   </main>
+
   <footer>
     <p>&copy; Better call Wayne 🫵. 2025 Wayne's World, all right reserved, I suppose.</p>
   </footer>
   
-  <!-- Script to fetch Game of Thrones seasons and episodes from TVmaze API and handle quote generation -->
   <script>
-    // Fetch Game of Thrones seasons and episodes using TVmaze API
     fetch('https://api.tvmaze.com/shows/82/seasons')
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok: ' + response.statusText);
-        }
+        // if (!response.ok) {
+        //   throw new Error('Network response was not ok: ' + response.statusText);
+        // }
         return response.json();
       })
       .then(seasons => {
         const seasonPromises = seasons.map(season => {
           return fetch(`https://api.tvmaze.com/seasons/${season.id}/episodes`)
             .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok: ' + response.statusText);
-              }
+              // if (!response.ok) {
+              //   throw new Error('Network response was not ok: ' + response.statusText);
+              // }
               return response.json();
             })
             .then(episodes => {
@@ -225,9 +223,7 @@
                   seasonHtml += `<li>Episode ${ep.number}: ${ep.name}</li>`;
                 });
                 seasonHtml += '</ul>';
-              } else {
-                seasonHtml += '<p>No episodes found for this season.</p>';
-              }
+              } 
               seasonHtml += '</div>';
               return seasonHtml;
             });
@@ -242,7 +238,6 @@
         document.getElementById('got-info').innerHTML = '<p>Error loading show information.</p>';
       });
       
-    // GOT Quote Generator: when the button is clicked, display a random quote
     const generateQuoteBtn = document.getElementById('generate-quote');
     const quoteDisplay = document.getElementById('quote-display');
     const gotQuotes = [
@@ -256,11 +251,11 @@
       "Any man who must say, 'I am the King,' is no true king.",
       "This is not a quote, just for fun lolll"
     ];
-    
     generateQuoteBtn.addEventListener('click', () => {
       const randomIndex = Math.floor(Math.random() * gotQuotes.length);
       quoteDisplay.textContent = gotQuotes[randomIndex];
     });
   </script>
+  
 </body>
 </html>
