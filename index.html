@@ -78,15 +78,19 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-800">
-  <header class="bg-gray-900 text-white text-center py-6 mb-6">
-    <h1 class="text-3xl font-bold">Hey hey! Welcome to Wayne's page, where there’s more to me than just the name!</h1>
+  <!-- Header with gradient background -->
+  <header class="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center py-6 mb-6">
+    <h1 class="text-3xl font-bold">
+      Hey hey! Welcome to Wayne's page, where there’s more to me than just the name!
+    </h1>
   </header>
   
-  <!-- Responsive grid layout with Tailwind -->
-  <main class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+  <!-- Main content split into 2 sections -->
+  <main class="container mx-auto px-4 space-y-6">
+    <!-- Section 1: Introduction -->
     <section id="Intro" class="bg-white p-6 rounded shadow">
       <h2 class="text-2xl font-semibold mb-4">About Me</h2>
-      <img src="images/Me.JPG" alt="Picture of myself" class="w-full max-w-xs mx-auto mb-4 mix-blend-multiply">
+      <img src="images/Me.JPG" alt="Picture of myself" class="w-full max-w-xs mx-auto mb-4">
       <p class="mb-4">
         You’ve probably met plenty of Waynes, but here's a fun fact: my legal first name is Wei. Since "Wei" sounds pretty close to "Wayne," I figured, why not roll with it? So, if you ever meet another Wayne, just remember, I might be the only one who got here through a linguistic shortcut.
       </p>
@@ -104,27 +108,34 @@
       </p>
       <p class="mb-4">So, let’s talk—better call Wayne! 🚀</p>
       
-      <!-- New HTML element: <details> -->
-      <details class="mt-4 p-4 bg-blue-50 border border-blue-300 rounded">
-        <summary class="font-semibold cursor-pointer">More About Me</summary>
-        <p class="mt-2">
-          I learned that the <code>&lt;details&gt;</code> element provides a native, interactive way to hide and reveal additional content. This enhances user experience by letting visitors control how much information they want to see—all without extra JavaScript.
+      <!-- Reflection on new HTML and CSS elements -->
+      <div class="mt-6 p-4 bg-blue-50 border border-blue-300 rounded">
+        <h3 class="text-xl font-semibold mb-2">
+          Reflection of Using New HTML and CSS Elements
+        </h3>
+        <p>
+          I learned that using CSS gradients can add a visually appealing background without the need for extra images. Tailwind CSS makes it effortless with utility classes like <code>bg-gradient-to-r</code>, which I applied in the header. By replacing the interactive <code>&lt;details&gt;</code> element with this static reflection section, I had to rethink how to present additional insights in a clear and accessible way.
         </p>
-      </details>
+      </div>
     </section>
     
+    <!-- Section 2: Contact -->
     <section id="Contact" class="bg-white p-6 rounded shadow">
       <h2 class="text-2xl font-semibold mb-4">Contact Me Here!</h2>
       <p class="mb-4">
         Feel free to drop me an email at 
-        <a href="mailto:ww552@cornell.edu" class="text-blue-600 hover:underline">ww552@cornell.edu</a> 
+        <a href="mailto:ww552@cornell.edu" class="text-blue-600 hover:underline">
+          ww552@cornell.edu
+        </a> 
         or connect with me on 
-        <a href="https://www.linkedin.com/in/-wayne/" target="_blank" class="text-blue-600 hover:underline">LinkedIn</a>,
+        <a href="https://www.linkedin.com/in/-wayne/" target="_blank" class="text-blue-600 hover:underline">
+          LinkedIn
+        </a>,
         or maybe just call me at 
         <span class="font-medium">206-532-7803</span>.
       </p>
       <p>
-        I also experimented with the CSS property <code>mix-blend-mode</code> (applied to my image above), which blends the image colors with the background to create a unique visual effect. This property allows for creative design effects directly in CSS.
+        I also explored using CSS gradients to create dynamic visual effects. It’s fascinating how a simple background transition can elevate the overall design of the page.
       </p>
     </section>
   </main>
@@ -134,3 +145,4 @@
   </footer>
 </body>
 </html>
+
